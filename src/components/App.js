@@ -53,11 +53,11 @@ class Home extends Component {
       loading: true,
       rol: ''
     }
-    this.captureFile = this.captureFile.bind(this);
+    
     this.createProduct = this.createProduct.bind(this);
-    this.subm = this.subm.bind(this);
+    
     this.rolechange = this.rolechange.bind(this);
-    this.addfamily = this.addfamily.bind(this);
+    
   }
 
    componentWillMount() {
