@@ -54,7 +54,7 @@ class Home extends Component {
       rol: ''
     }
     
-    this.createProduct = this.createProduct.bind(this);
+    this.createAgreement = this.createAgreement.bind(this);
     
     this.rolechange = this.rolechange.bind(this);
     
@@ -140,7 +140,7 @@ class Home extends Component {
 
 
 
-createProduct(party1, party2, disp1, disp2, fund1, fund2,_input) {
+    createAgreement(party1, party2, disp1, disp2, fund1, fund2,_input) {
   this.setState({ loading: true })
  
 
