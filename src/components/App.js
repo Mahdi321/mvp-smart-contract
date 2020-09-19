@@ -175,7 +175,7 @@ class Home extends Component {
                   const photo =this.productPhoto
                   const _role = this.state.rol
     
-        this.subm(event,name,race,_role,country)
+        this.createAgreement(event,name,race,_role,country)
         
                 }}>
                    <div className="form-group mr-sm-2">
