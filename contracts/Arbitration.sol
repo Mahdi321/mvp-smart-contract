@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity >=0.4.23;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -623,7 +623,7 @@ contract Arbitration {
   /**
    * @notice Returns current timestamp
    */
-  function getNow() internal constant returns (uint256) {
+  function getNow() internal view returns (uint256) {
     return now;
   }
 
