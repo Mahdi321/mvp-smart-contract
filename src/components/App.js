@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import logo from '../logo.png';
 import './App.css';
 import ArbitrationFactory from '../abis/ArbitrationFactory.json';
+import Arbitration from '../abis/Arbitration.json';
 import Navbar from './Navbar';
 import List from './List';
 import {withRouter} from 'react-router';
@@ -85,13 +86,13 @@ class Home extends Component {
     const accounts = await web3.eth.getAccounts()
       this.setState({ account: accounts[0] })
     const  networkId = await web3.eth.net.getId()
-        networkData = Census.networks[networkId]
+        networkData = ArbitrationFactory.networks[networkId]
         if(networkData) {
-          const marketplace = web3.eth.Contract(Census.abi, networkData.address).at(tokenAddress);
-          this.setState({ marketplace });
+          const ArbitrationFactory = web3.eth.Contract(ArbitrationFactory.abi, networkData.address).at(tokenAddress);
+          this.setState({ ArbitrationFactory });
         
-          //window.alert(marketplace.methods)
-           var householdID = 0;
+         
+          
            var PastEvents = [];
           //window.alert(await marketplace.methods.getpersonsstruct().call());
           PastEvents = await marketplace.getPastEvents('ProductCreated', {filter: {wallet: this.state.account},fromBlock: 0 })
@@ -144,10 +145,13 @@ class Home extends Component {
   this.setState({ loading: true });
  
 
-  this.state.marketplace.methods.createArbitration([party1,party2], [disp1,disp2], [fund1,fund2],this.state.marketplace.methods.generateHash(_input)).send({ from: this.state.account})
+  this.state.ArbitrationFactory.methods.createArbitration([party1,party2], [disp1,disp2], [fund1,fund2],this.state.marketplace.methods.generateHash(_input)).send({ from: this.state.account})
   .once('receipt', (receipt) => {
     this.setState({ loading: false })
 });
+const Arbitration = web3.eth.Contract.events.ArbitrationCreated();
+console.log(Arbitration);
+this.setState({ Arbitration });
 contract.transfer(toAddress, fund1, (error, txHash) => {
   // it returns tx hash because sending tx
   console.log(txHash);
