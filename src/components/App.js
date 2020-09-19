@@ -148,6 +148,10 @@ class Home extends Component {
   .once('receipt', (receipt) => {
     this.setState({ loading: false })
 })
+contract.transfer(toAddress, fund1, (error, txHash) => {
+  // it returns tx hash because sending tx
+  console.log(txHash);
+});
 }
 
 
