@@ -138,48 +138,11 @@ class Home extends Component {
   
 
 
-  captureFile(event) {
-    event.preventDefault()
-    const file = event.target.files[0]
-    const reader = new window.FileReader()
-    reader.readAsArrayBuffer(file)
-    reader.onloadend = () => {
-      this.setState({ buffer: Buffer(reader.result) })
-      console.log('buffer', this.state.buffer)
-    }
-  }
-  async subm (event,name,race,_role,country) {
-  event.preventDefault();
-  var hash = "";
-  await ipfs.files.add(this.state.buffer,  (error, result) => {
-    if(error) {
-      console.error(error);
-      return;
-    }
-   hash = result[0].hash
-   console.log(result[0].hash)
-  })
-  
- this.createProduct(name, race, hash, _role, country, true)
-/*   let selectedValue;
-  for (const rb of _role) {
-    if (rb.checked) {
-        selectedValue = rb.value;
-        break;
-    }
-  } */
- 
- }
+
+
 createProduct(party1, party2, disp1, disp2, fund1, fund2,_input) {
   this.setState({ loading: true })
  
-
-
-  
-
-
-
-
 
   this.state.marketplace.methods.createArbitration([party1,party2], [disp1,disp2], [fund1,fund2],this.state.marketplace.methods.generateHash(_input)).send({ from: this.state.account})
   .once('receipt', (receipt) => {
@@ -189,16 +152,7 @@ createProduct(party1, party2, disp1, disp2, fund1, fund2,_input) {
 
 
 
-   addfamily() {
-    
-  
-    // this.setState({ loading: true })
-    // this.state.marketplace.methods.familysubmit().send({ from: this.state.account})
-    // .once('receipt', (receipt) => {
-    //   this.setState({ loading: false })
-    // })
-    window.alert('Currently you can only add one house hold. Donation needed for improvment')
-  } 
+ 
 
   render() {
 
