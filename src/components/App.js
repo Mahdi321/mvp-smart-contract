@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import logo from '../logo.png';
 import './App.css';
-import Census from '../abis/Census.json';
+import ArbitrationFactory from '../abis/ArbitrationFactory.json';
 import Navbar from './Navbar';
 import List from './List';
 import {withRouter} from 'react-router';
@@ -141,13 +141,13 @@ class Home extends Component {
 
 
     createAgreement(party1, party2, disp1, disp2, fund1, fund2,_input) {
-  this.setState({ loading: true })
+  this.setState({ loading: true });
  
 
   this.state.marketplace.methods.createArbitration([party1,party2], [disp1,disp2], [fund1,fund2],this.state.marketplace.methods.generateHash(_input)).send({ from: this.state.account})
   .once('receipt', (receipt) => {
     this.setState({ loading: false })
-})
+});
 contract.transfer(toAddress, fund1, (error, txHash) => {
   // it returns tx hash because sending tx
   console.log(txHash);
