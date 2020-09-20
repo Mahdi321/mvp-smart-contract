@@ -469,7 +469,9 @@ contract Arbitration {
   }
 
   function _vote(address _sender, address _voteAddress, uint256 _voteAmount) internal hasState(State.Dispute) {
-    (uint256 newDisputeEnds, uint256 newDisputeWindowVotes) = calcDisputeEnds();
+    uint256 newDisputeEnds;
+    uint256 newDisputeWindowVotes;
+    ( newDisputeEnds,  newDisputeWindowVotes) = calcDisputeEnds();
     if (newDisputeEnds != disputeEnds) {
       emit DisputeEndsAdjusted(newDisputeEnds, disputeEnds);
       disputeEnds = newDisputeEnds;
@@ -520,7 +522,9 @@ contract Arbitration {
    */
   function payoutVoter(uint256 _start, uint256 _end) public hasState(State.Dispute) {
     //Generally setting _start to 0 and _end to a large number should be fine, but having the option avoids a possible block gas limit issue
-    (uint256 newDisputeEnds, uint256 newDisputeWindowVotes) = calcDisputeEnds();
+    uint256 newDisputeEnds;
+    uint256 newDisputeWindowVotes;
+    ( newDisputeEnds,  newDisputeWindowVotes) = calcDisputeEnds();
     if (newDisputeEnds != disputeEnds) {
       emit DisputeEndsAdjusted(newDisputeEnds, disputeEnds);
       disputeEnds = newDisputeEnds;
@@ -591,7 +595,9 @@ contract Arbitration {
    * @dev Allows sender (party) to claim their dispersal tokens
    */
   function payoutParty() public hasState(State.Dispute) onlyParties {
-    (uint256 newDisputeEnds, uint256 newDisputeWindowVotes) = calcDisputeEnds();
+    uint256 newDisputeEnds;
+    uint256 newDisputeWindowVotes;
+    ( newDisputeEnds,  newDisputeWindowVotes) = calcDisputeEnds();
     if (newDisputeEnds != disputeEnds) {
       emit DisputeEndsAdjusted(newDisputeEnds, disputeEnds);
       disputeEnds = newDisputeEnds;
