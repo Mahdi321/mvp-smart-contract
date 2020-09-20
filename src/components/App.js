@@ -3,7 +3,6 @@ import Web3 from 'web3';
 import logo from '../logo.png';
 import './App.css';
 import ArbitrationFactory from '../abis/ArbitrationFactory.json';
-import Arbitration from '../abis/Arbitration.json';
 import Navbar from './Navbar';
 import List from './List';
 import {withRouter} from 'react-router';
